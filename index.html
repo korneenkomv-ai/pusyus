@@ -395,46 +395,5 @@
 
     </div>
 
-    <script>
-        // ===== НАСТРОЙКИ =====
-        // ⚠️ ПАРОЛЬ ДЛЯ ВХОДА
-        const CORRECT_PIN = 'Omku123!';
-
-        // ===== ФУНКЦИЯ ПРОВЕРКИ ПАРОЛЯ =====
-        function checkPin() {
-            const input = document.getElementById('pinInput');
-            const error = document.getElementById('pinError');
-            const pin = input.value.trim();
-
-            if (pin === CORRECT_PIN) {
-                // Правильный пароль — показываем сайт
-                document.getElementById('pinOverlay').classList.add('hidden');
-                document.getElementById('mainContent').classList.add('visible');
-                error.textContent = '';
-                input.value = '';
-            } else {
-                // Неправильный пароль
-                error.textContent = '❌ Неверный пароль. Попробуйте снова.';
-                input.value = '';
-                input.focus();
-                // Легкая встряска для эффекта ошибки
-                input.style.borderColor = '#d32f2f';
-                setTimeout(() => { input.style.borderColor = ''; }, 800);
-            }
-        }
-
-        // ===== ВВОД ПАРОЛЯ ПО НАЖАТИЮ ENTER =====
-        document.getElementById('pinInput').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                checkPin();
-            }
-        });
-
-        // ===== АВТОФОКУС НА ПОЛЕ ВВОДА =====
-        window.addEventListener('load', function() {
-            document.getElementById('pinInput').focus();
-        });
-    </script>
-
-</body>
+ 
 </html>
