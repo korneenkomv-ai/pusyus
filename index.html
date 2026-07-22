@@ -17,11 +17,11 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            align-items: center;
             padding: 30px 20px;
         }
 
-        /* ===== КАРТОЧКА БЕЗ БЕЛОЙ ПОДЛОЖКИ ===== */
+        /* ===== ОСНОВНОЙ КОНТЕНТ (скрыт, пока пароль не введён) ===== */
         .card {
             background: transparent;
             padding: 20px 20px 40px;
@@ -29,6 +29,105 @@
             width: 100%;
             text-align: center;
             position: relative;
+            display: none;
+        }
+
+        .card.visible {
+            display: block;
+        }
+
+        /* ===== ЭКРАН ВВОДА ПАРОЛЯ ===== */
+        .pin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(212, 233, 255, 0.95);
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            flex-direction: column;
+            gap: 25px;
+            padding: 20px;
+        }
+
+        .pin-overlay.hidden {
+            display: none;
+        }
+
+        .pin-box {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(8px);
+            padding: 50px 45px 55px;
+            border-radius: 48px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(70, 130, 200, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .pin-box h2 {
+            font-size: 2rem;
+            color: #1a3a5e;
+            margin-bottom: 8px;
+        }
+
+        .pin-box .sub {
+            color: #3d6a8f;
+            font-size: 1rem;
+            margin-bottom: 25px;
+        }
+
+        .pin-box input {
+            width: 100%;
+            padding: 16px 20px;
+            font-size: 1.2rem;
+            text-align: center;
+            border: 2px solid rgba(120, 170, 220, 0.3);
+            border-radius: 30px;
+            outline: none;
+            background: rgba(255, 255, 255, 0.6);
+            font-family: 'Nunito', sans-serif;
+            font-weight: 500;
+            color: #1a3a5e;
+            transition: border-color 0.3s;
+        }
+
+        .pin-box input:focus {
+            border-color: #6f9ed8;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .pin-box .error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            min-height: 24px;
+        }
+
+        .pin-box button {
+            margin-top: 20px;
+            padding: 14px 50px;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(120, 170, 220, 0.3);
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1a3a5e;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .pin-box button:hover {
+            background: rgba(255, 255, 255, 0.95);
+            border-color: #6f9ed8;
+            transform: scale(1.02);
+            box-shadow: 0 8px 24px rgba(70, 130, 200, 0.15);
         }
 
         /* ===== ДЕКОРАТИВНЫЕ СЕРДЕЧКА ===== */
@@ -116,7 +215,7 @@
             box-shadow: 0 12px 28px rgba(70, 130, 200, 0.15);
         }
 
-        /* ===== КНОПКА "ДЛЯ ЗАМЕТОК" (без иконки блокнота) ===== */
+        /* ===== КНОПКА "ДЛЯ ЗАМЕТОК" ===== */
         .notes-button-wrap {
             margin: 25px 0 10px;
         }
@@ -145,7 +244,7 @@
             border-color: #6f9ed8;
         }
 
-        /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА (компактный, полупрозрачный) ===== */
+        /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА ===== */
         .credentials-block {
             margin-top: 25px;
             padding: 14px 22px;
@@ -218,12 +317,30 @@
             .heart-float {
                 display: none;
             }
+            .pin-box {
+                padding: 30px 20px 35px;
+            }
+            .pin-box h2 {
+                font-size: 1.6rem;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
+    <!-- ===== ЭКРАН ВВОДА ПАРОЛЯ ===== -->
+    <div class="pin-overlay" id="pinOverlay">
+        <div class="pin-box">
+            <h2>🔐 Введите пароль</h2>
+            <p class="sub">Доступ к общим файлам отдела</p>
+            <input type="password" id="pinInput" placeholder="Введите пароль" autofocus>
+            <div class="error" id="pinError"></div>
+            <button onclick="checkPin()">Войти</button>
+        </div>
+    </div>
+
+    <!-- ===== ОСНОВНОЙ САЙТ ===== -->
+    <div class="card" id="mainContent">
 
         <!-- ===== ХАОТИЧНЫЕ СЕРДЕЧКА ===== -->
         <span class="heart-float h1">💙</span>
@@ -264,31 +381,60 @@
             <a href="https://disk.yandex.ru/d/aVp8Rt1ZAKM_NQ" target="_blank">
                 7. Инструкции 1С:Кабинет сотрудника
             </a>
-            <!-- Новая кнопка -->
             <a href="https://docs.google.com/spreadsheets/d/1zPWCWR2BISrWP1569-r8SGTxZVdwZPluQaEUEbCpVRs/edit?gid=0#gid=0" target="_blank">
                 8. Чек-лист перехода на КЭДО
             </a>
         </div>
 
-        <!-- ===== КНОПКА "ДЛЯ ЗАМЕТОК" (без иконки) ===== -->
+        <!-- ===== КНОПКА "ДЛЯ ЗАМЕТОК" ===== -->
         <div class="notes-button-wrap">
             <a href="https://docs.google.com/document/d/162_fPtjzC8j-Fq2-4-Ix5ZPwSp55y2-keVIsytW_QlQ/edit?usp=sharing" target="_blank" class="notes-button">
                 Для заметок
             </a>
         </div>
 
-        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА ===== -->
-        <div class="credentials-block">
-            <div class="label">
-                <span>🔑</span> Яндекс
-            </div>
-            <div class="data">
-                <span class="login">methodologists@yandex.ru</span>
-                <span>Omku123!</span>
-            </div>
-        </div>
-
     </div>
+
+    <script>
+        // ===== НАСТРОЙКИ =====
+        // ⚠️ ПАРОЛЬ ДЛЯ ВХОДА
+        const CORRECT_PIN = 'Omku123!';
+
+        // ===== ФУНКЦИЯ ПРОВЕРКИ ПАРОЛЯ =====
+        function checkPin() {
+            const input = document.getElementById('pinInput');
+            const error = document.getElementById('pinError');
+            const pin = input.value.trim();
+
+            if (pin === CORRECT_PIN) {
+                // Правильный пароль — показываем сайт
+                document.getElementById('pinOverlay').classList.add('hidden');
+                document.getElementById('mainContent').classList.add('visible');
+                error.textContent = '';
+                input.value = '';
+            } else {
+                // Неправильный пароль
+                error.textContent = '❌ Неверный пароль. Попробуйте снова.';
+                input.value = '';
+                input.focus();
+                // Легкая встряска для эффекта ошибки
+                input.style.borderColor = '#d32f2f';
+                setTimeout(() => { input.style.borderColor = ''; }, 800);
+            }
+        }
+
+        // ===== ВВОД ПАРОЛЯ ПО НАЖАТИЮ ENTER =====
+        document.getElementById('pinInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                checkPin();
+            }
+        });
+
+        // ===== АВТОФОКУС НА ПОЛЕ ВВОДА =====
+        window.addEventListener('load', function() {
+            document.getElementById('pinInput').focus();
+        });
+    </script>
 
 </body>
 </html>
