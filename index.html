@@ -13,41 +13,50 @@
 
         body {
             background: #d4e9ff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Nunito', 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 20px;
+            align-items: flex-start;
+            padding: 30px 20px;
         }
 
         .card {
             background: rgba(255, 255, 255, 0.92);
-            padding: 50px 45px 60px;
-            border-radius: 40px;
-            max-width: 1000px;
+            padding: 40px 40px 50px;
+            border-radius: 48px;
+            max-width: 1100px;
             width: 100%;
             text-align: center;
             box-shadow: 0 20px 60px rgba(70, 130, 200, 0.15);
             border: 1px solid rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(4px);
+            margin: 10px 0;
         }
 
         h1 {
-            font-size: 3.5rem;
+            font-size: 3.4rem;
+            font-weight: 700;
             color: #1a3a5e;
-            font-weight: 600;
-            letter-spacing: -1px;
-            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+            margin-bottom: 6px;
         }
 
+        /* Звёздочки до и после подзаголовка */
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+            font-weight: 500;
             color: #3d6a8f;
             border-bottom: 2px solid rgba(100, 150, 200, 0.15);
             padding-bottom: 18px;
             margin-bottom: 30px;
-            font-weight: 400;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.8px;
+        }
+
+        .subtitle .stars {
+            color: #f5b342;
+            margin: 0 8px;
+            font-size: 1.4rem;
         }
 
         /* ===== БОЛЬШОЕ ПОЛЕ ДЛЯ КНОПОК ===== */
@@ -58,7 +67,7 @@
             margin: 25px 0 20px;
             padding: 30px 25px;
             background: rgba(235, 245, 255, 0.4);
-            border-radius: 30px;
+            border-radius: 40px;
             border: 2px dashed rgba(100, 150, 200, 0.15);
             min-height: 150px;
         }
@@ -71,9 +80,9 @@
             background: #ffffff;
             color: #1a3a5e;
             text-decoration: none;
-            border-radius: 20px;
+            border-radius: 28px;
             font-size: 1.05rem;
-            font-weight: 500;
+            font-weight: 600;
             border: 2px solid rgba(120, 170, 220, 0.2);
             transition: all 0.3s ease;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
@@ -91,75 +100,100 @@
             box-shadow: 0 12px 28px rgba(70, 130, 200, 0.15);
         }
 
-        /* Специальный стиль для последней кнопки (Яндекс) */
-        .buttons-grid a.yandex-btn {
-            background: #fef7e8;
-            border-color: #f5b342;
-        }
-
-        .buttons-grid a.yandex-btn:hover {
-            background: #fff3d6;
-            border-color: #e6a030;
-        }
-
-        /* Секция для отображения контента (только для Яндекс) */
-        .content-area {
+        /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА ===== */
+        .credentials-block {
             margin-top: 30px;
+            padding: 22px 25px;
+            background: #fef7e8;
+            border-radius: 32px;
+            border: 2px solid #f5d9a3;
             text-align: left;
-            border-top: 1px solid rgba(120, 170, 220, 0.15);
-            padding-top: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px 20px;
         }
 
-        .block {
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 20px;
-            padding: 20px 25px;
-            margin-bottom: 15px;
-            border-left: 5px solid #6f9ed8;
-            display: none;
+        .credentials-block .label {
+            font-weight: 700;
+            color: #1a3a5e;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .block:target {
-            display: block;
-            animation: fadeIn 0.4s ease;
-        }
-
-        .block h2 {
+        .credentials-block .label i {
             font-size: 1.3rem;
-            color: #1a3a5e;
-            margin-bottom: 8px;
         }
 
-        .block p {
+        .credentials-block .data {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
             font-size: 1rem;
-            color: #2c4d6e;
-            line-height: 1.8;
         }
 
-        .block .credentials {
-            background: #f0f7ff;
-            padding: 15px 20px;
-            border-radius: 15px;
-            margin-top: 10px;
-            border: 1px solid rgba(100, 150, 200, 0.2);
-        }
-
-        .block .credentials strong {
+        .credentials-block .data span {
+            background: white;
+            padding: 6px 16px;
+            border-radius: 40px;
+            border: 1px solid #f5d9a3;
+            font-weight: 500;
             color: #1a3a5e;
-            display: inline-block;
-            width: 80px;
         }
 
-        .block a {
+        .credentials-block .data .login {
+            background: #e8f0fe;
+            border-color: #b5cff0;
+        }
+
+        /* ===== ПОЛЕ ДЛЯ ЗАМЕТОК ===== */
+        .notes-section {
+            margin-top: 25px;
+            padding: 22px 25px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 32px;
+            border: 2px solid rgba(120, 170, 220, 0.15);
+            text-align: left;
+        }
+
+        .notes-section label {
+            font-weight: 700;
             color: #1a3a5e;
-            word-break: break-all;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .notes-section textarea {
+            width: 100%;
+            padding: 16px 18px;
+            border-radius: 24px;
+            border: 2px solid rgba(120, 170, 220, 0.2);
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+            transition: border-color 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            color: #1a3a5e;
         }
 
+        .notes-section textarea:focus {
+            outline: none;
+            border-color: #6f9ed8;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(111, 158, 216, 0.1);
+        }
+
+        .notes-section textarea::placeholder {
+            color: #8a9fb0;
+            font-weight: 400;
+        }
+
+        /* подсказка */
         .hint {
             color: #5a7fa0;
             font-size: 0.9rem;
@@ -169,7 +203,7 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 2.5rem; }
-            .card { padding: 30px 20px 40px; }
+            .card { padding: 25px 18px 35px; border-radius: 32px; }
             .buttons-grid {
                 grid-template-columns: 1fr;
                 padding: 20px 15px;
@@ -179,6 +213,14 @@
                 padding: 14px;
                 min-height: 60px;
             }
+            .credentials-block {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+            .credentials-block .data {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -187,68 +229,57 @@
     <div class="card">
 
         <h1>Общие файлы</h1>
-        <div class="subtitle">Отдела методологии кадрового учета</div>
 
-        <!-- ===== 8 КНОПОК ===== -->
+        <!-- Звёздочки до и после подзаголовка -->
+        <div class="subtitle">
+            <span class="stars">✦</span>
+            Отдела методологии кадрового учета
+            <span class="stars">✦</span>
+        </div>
+
+        <!-- ===== 7 КНОПОК (все ведут на ссылки) ===== -->
         <div class="buttons-grid">
-            <!-- 1. ПФ КЭДО — ссылка -->
             <a href="https://docs.google.com/spreadsheets/d/1-vI5017aE3pRPvl_P9dblhEzStuYHgP3qCr1znW3pnw/edit?gid=0#gid=0" target="_blank">
                 1. ПФ КЭДО. Текущие замечания
             </a>
-
-            <!-- 2. Заявки в УСП — ссылка -->
             <a href="https://docs.google.com/spreadsheets/d/14clJJmBMhtM1x8zSuVq6jL1YFmpBBTKsUojp_FBsFl0/edit?gid=0#gid=0" target="_blank">
                 2. Заявки в УСП
             </a>
-
-            <!-- 3. Инструкции по печатным формам — ссылка -->
             <a href="https://docs.google.com/spreadsheets/d/1ja6mOnFm2X8OtOMq7G3aog9EVk3kEXHFe9wmmXQUvhc/edit?gid=0#gid=0" target="_blank">
                 3. Инструкции по печатным формам
             </a>
-
-            <!-- 4. Проверка роли — ссылка -->
             <a href="https://docs.google.com/spreadsheets/d/1pPJ7BLQJmIx7S7Lghm0Is-xY9UlRzaov67QE-MnxpKw/edit?gid=421631066#gid=421631066" target="_blank">
                 4. Проверка роли ОУ_Согласующий 4198 + печать ПФ без проведения 5627
             </a>
-
-            <!-- 5. Проверка Шаблонов КЭДО — ссылка -->
             <a href="https://docs.google.com/spreadsheets/d/1eQ80ZQO-Hu9kGC3stnw5X9guIrhzu7XGoXdmXzxaacI/edit?gid=1593687503#gid=1593687503" target="_blank">
                 5. Проверка Шаблонов КЭДО (стат модель)
             </a>
-
-            <!-- 6. Дорожная карта — ссылка -->
             <a href="https://docs.google.com/spreadsheets/d/13viXj7K4WqwDW9xEIKKswfNS9sFPe6l-jOQ72TL5B7Q/edit?gid=1407305442#gid=1407305442" target="_blank">
                 6. Дорожная карта ПФ ЦИО
             </a>
-
-            <!-- 7. Инструкции 1С — ссылка -->
             <a href="https://disk.yandex.ru/d/aVp8Rt1ZAKM_NQ" target="_blank">
                 7. Инструкции 1С:Кабинет сотрудника
             </a>
-
-            <!-- 8. Яндекс — НЕ ссылка, а якорь на блок с данными -->
-            <a href="#yandex" class="yandex-btn">
-                8. Данные от аккаунта Яндекс/Диск/Почта
-            </a>
         </div>
 
-        <!-- ===== КОНТЕНТ (только для Яндекс) ===== -->
-        <div class="content-area">
-
-            <div class="block" id="yandex">
-                <h2>🔑 Данные от аккаунта Яндекс/Диск/Почта</h2>
-                <div class="credentials">
-                    <p><strong>Логин:</strong> methodologists@yandex.ru</p>
-                    <p><strong>Пароль:</strong> Omku123!</p>
-                </div>
-                <p style="margin-top: 12px; font-size: 0.9rem; color: #5a7fa0;">
-                    ⚠️ Данные для входа в аккаунт Яндекс
-                </p>
+        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА В АККАУНТ (вместо 8-й кнопки) ===== -->
+        <div class="credentials-block">
+            <div class="label">
+                <span>🔑</span> Данные аккаунта Яндекс
             </div>
-
+            <div class="data">
+                <span class="login">methodologists@yandex.ru</span>
+                <span>Omku123!</span>
+            </div>
         </div>
 
-        <div class="hint">💙 нажми на кнопку, чтобы перейти по ссылке или увидеть данные</div>
+        <!-- ===== ПОЛЕ ДЛЯ ЗАМЕТОК ===== -->
+        <div class="notes-section">
+            <label for="notes">📝 Для заметок</label>
+            <textarea id="notes" placeholder="Введите ваш комментарий или заметку здесь..."></textarea>
+        </div>
+
+        <div class="hint">💙 нажми на кнопку, чтобы перейти по ссылке</div>
 
     </div>
 
