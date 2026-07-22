@@ -1,80 +1,256 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>сайт машенька</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Общие файлы</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: #d4e9ff;
-            font-family: Arial;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
+            padding: 20px;
         }
+
         .card {
-            background: white;
-            padding: 40px;
-            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 50px 45px 60px;
+            border-radius: 40px;
+            max-width: 1000px;
+            width: 100%;
             text-align: center;
-            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(70, 130, 200, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
+
         h1 {
+            font-size: 3.5rem;
             color: #1a3a5e;
-            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: -1px;
+            margin-bottom: 5px;
         }
-        .links a {
-            display: inline-block;
-            margin: 10px;
-            padding: 10px 20px;
-            background: #e8f0fe;
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #3d6a8f;
+            border-bottom: 2px solid rgba(100, 150, 200, 0.15);
+            padding-bottom: 18px;
+            margin-bottom: 30px;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== БОЛЬШОЕ ПОЛЕ ДЛЯ КНОПОК ===== */
+        .buttons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin: 25px 0 20px;
+            padding: 30px 25px;
+            background: rgba(235, 245, 255, 0.4);
+            border-radius: 30px;
+            border: 2px dashed rgba(100, 150, 200, 0.15);
+            min-height: 150px;
+        }
+
+        .buttons-grid a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 16px;
+            background: #ffffff;
             color: #1a3a5e;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 20px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            border: 2px solid rgba(120, 170, 220, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            text-align: center;
+            min-height: 70px;
+            word-break: break-word;
+            line-height: 1.3;
+            cursor: pointer;
         }
-        .links a:hover {
-            background: #b5d4ff;
+
+        .buttons-grid a:hover {
+            background: #e8f4ff;
+            border-color: #6f9ed8;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 28px rgba(70, 130, 200, 0.15);
         }
+
+        /* Специальный стиль для последней кнопки (Яндекс) */
+        .buttons-grid a.yandex-btn {
+            background: #fef7e8;
+            border-color: #f5b342;
+        }
+
+        .buttons-grid a.yandex-btn:hover {
+            background: #fff3d6;
+            border-color: #e6a030;
+        }
+
+        /* Секция для отображения контента (только для Яндекс) */
+        .content-area {
+            margin-top: 30px;
+            text-align: left;
+            border-top: 1px solid rgba(120, 170, 220, 0.15);
+            padding-top: 25px;
+        }
+
         .block {
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-left: 5px solid #6f9ed8;
             display: none;
-            margin-top: 20px;
-            padding: 15px;
-            background: #f5faff;
-            border-radius: 15px;
         }
+
         .block:target {
             display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .block h2 {
+            font-size: 1.3rem;
+            color: #1a3a5e;
+            margin-bottom: 8px;
+        }
+
+        .block p {
+            font-size: 1rem;
+            color: #2c4d6e;
+            line-height: 1.8;
+        }
+
+        .block .credentials {
+            background: #f0f7ff;
+            padding: 15px 20px;
+            border-radius: 15px;
+            margin-top: 10px;
+            border: 1px solid rgba(100, 150, 200, 0.2);
+        }
+
+        .block .credentials strong {
+            color: #1a3a5e;
+            display: inline-block;
+            width: 80px;
+        }
+
+        .block a {
+            color: #1a3a5e;
+            word-break: break-all;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hint {
+            color: #5a7fa0;
+            font-size: 0.9rem;
+            margin-top: 20px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .card { padding: 30px 20px 40px; }
+            .buttons-grid {
+                grid-template-columns: 1fr;
+                padding: 20px 15px;
+            }
+            .buttons-grid a {
+                font-size: 1rem;
+                padding: 14px;
+                min-height: 60px;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="card">
-        <h1>сайт машенька</h1>
-        <p style="color: #4a7aa0;">✨ нежно-голубое настроение ✨</p>
-        
-        <div class="links">
-            <a href="#about">о машеньке</a>
-            <a href="#den">ден мудень</a>
-            <a href="#sanya">санявс</a>
+
+        <h1>Общие файлы</h1>
+        <div class="subtitle">Отдела методологии кадрового учета</div>
+
+        <!-- ===== 8 КНОПОК ===== -->
+        <div class="buttons-grid">
+            <!-- 1. ПФ КЭДО — ссылка -->
+            <a href="https://docs.google.com/spreadsheets/d/1-vI5017aE3pRPvl_P9dblhEzStuYHgP3qCr1znW3pnw/edit?gid=0#gid=0" target="_blank">
+                1. ПФ КЭДО. Текущие замечания
+            </a>
+
+            <!-- 2. Заявки в УСП — ссылка -->
+            <a href="https://docs.google.com/spreadsheets/d/14clJJmBMhtM1x8zSuVq6jL1YFmpBBTKsUojp_FBsFl0/edit?gid=0#gid=0" target="_blank">
+                2. Заявки в УСП
+            </a>
+
+            <!-- 3. Инструкции по печатным формам — ссылка -->
+            <a href="https://docs.google.com/spreadsheets/d/1ja6mOnFm2X8OtOMq7G3aog9EVk3kEXHFe9wmmXQUvhc/edit?gid=0#gid=0" target="_blank">
+                3. Инструкции по печатным формам
+            </a>
+
+            <!-- 4. Проверка роли — ссылка -->
+            <a href="https://docs.google.com/spreadsheets/d/1pPJ7BLQJmIx7S7Lghm0Is-xY9UlRzaov67QE-MnxpKw/edit?gid=421631066#gid=421631066" target="_blank">
+                4. Проверка роли ОУ_Согласующий 4198 + печать ПФ без проведения 5627
+            </a>
+
+            <!-- 5. Проверка Шаблонов КЭДО — ссылка -->
+            <a href="https://docs.google.com/spreadsheets/d/1eQ80ZQO-Hu9kGC3stnw5X9guIrhzu7XGoXdmXzxaacI/edit?gid=1593687503#gid=1593687503" target="_blank">
+                5. Проверка Шаблонов КЭДО (стат модель)
+            </a>
+
+            <!-- 6. Дорожная карта — ссылка -->
+            <a href="https://docs.google.com/spreadsheets/d/13viXj7K4WqwDW9xEIKKswfNS9sFPe6l-jOQ72TL5B7Q/edit?gid=1407305442#gid=1407305442" target="_blank">
+                6. Дорожная карта ПФ ЦИО
+            </a>
+
+            <!-- 7. Инструкции 1С — ссылка -->
+            <a href="https://disk.yandex.ru/d/aVp8Rt1ZAKM_NQ" target="_blank">
+                7. Инструкции 1С:Кабинет сотрудника
+            </a>
+
+            <!-- 8. Яндекс — НЕ ссылка, а якорь на блок с данными -->
+            <a href="#yandex" class="yandex-btn">
+                8. Данные от аккаунта Яндекс/Диск/Почта
+            </a>
         </div>
-        
-        <div class="block" id="about">
-            <h2>🌸 о машеньке</h2>
-            <p>Машенька — светлый и добрый человек.</p>
+
+        <!-- ===== КОНТЕНТ (только для Яндекс) ===== -->
+        <div class="content-area">
+
+            <div class="block" id="yandex">
+                <h2>🔑 Данные от аккаунта Яндекс/Диск/Почта</h2>
+                <div class="credentials">
+                    <p><strong>Логин:</strong> methodologists@yandex.ru</p>
+                    <p><strong>Пароль:</strong> Omku123!</p>
+                </div>
+                <p style="margin-top: 12px; font-size: 0.9rem; color: #5a7fa0;">
+                    ⚠️ Данные для входа в аккаунт Яндекс
+                </p>
+            </div>
+
         </div>
-        
-        <div class="block" id="den">
-            <h2>🧠 ден мудень</h2>
-            <p>Мудрый друг, который всегда поддержит.</p>
-        </div>
-        
-        <div class="block" id="sanya">
-            <h2>⚡ санявс</h2>
-            <p>Загадочная личность, которая всегда рядом.</p>
-        </div>
-        
-        <p style="color: #5a7fa0; margin-top: 20px;">💙 нажми на ссылку 💙</p>
+
+        <div class="hint">💙 нажми на кнопку, чтобы перейти по ссылке или увидеть данные</div>
+
     </div>
+
 </body>
 </html>
