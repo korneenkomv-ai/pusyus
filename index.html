@@ -144,51 +144,6 @@
             border-color: #6f9ed8;
         }
 
-        /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА ===== */
-        .credentials-block {
-            margin-top: 25px;
-            padding: 14px 22px;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(4px);
-            border-radius: 32px;
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            text-align: left;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            gap: 12px 25px;
-        }
-
-        .credentials-block .label {
-            font-weight: 700;
-            color: #1a3a5e;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .credentials-block .data {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px 16px;
-            font-size: 0.95rem;
-        }
-
-        .credentials-block .data span {
-            background: rgba(255, 255, 255, 0.7);
-            padding: 4px 14px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            font-weight: 500;
-            color: #1a3a5e;
-        }
-
-        .credentials-block .data .login {
-            background: rgba(255, 255, 255, 0.8);
-        }
-
         @media (max-width: 600px) {
             h1 { font-size: 2.5rem; }
             .card { padding: 15px 10px 30px; }
@@ -200,15 +155,6 @@
                 font-size: 1rem;
                 padding: 14px;
                 min-height: 60px;
-            }
-            .credentials-block {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 12px 16px;
-            }
-            .credentials-block .data {
-                justify-content: center;
             }
             .notes-button {
                 font-size: 1.1rem;
@@ -273,17 +219,6 @@
             <a href="https://docs.google.com/document/d/162_fPtjzC8j-Fq2-4-Ix5ZPwSp55y2-keVIsytW_QlQ/edit?usp=sharing" target="_blank" class="notes-button">
                 Для заметок
             </a>
-        </div>
-
-        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА ===== -->
-        <div class="credentials-block">
-            <div class="label">
-                <span>🔑</span> Яндекс
-            </div>
-            <div class="data">
-                <span class="login">methodologists@yandex.ru</span>
-                <span>Omku123!</span>
-            </div>
         </div>
 
     </div>
