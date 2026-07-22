@@ -32,7 +32,34 @@
             border: 1px solid rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(4px);
             margin: 10px 0;
+            position: relative;
         }
+
+        /* ===== ДЕКОРАТИВНЫЕ ЗВЁЗДОЧКИ И ИКОНКИ ===== */
+        .deco-star {
+            color: #f5b342;
+            font-size: 1.2rem;
+            margin: 0 4px;
+            display: inline-block;
+        }
+
+        .deco-icon {
+            font-size: 1.3rem;
+            margin: 0 6px;
+            display: inline-block;
+        }
+
+        /* Звёздочка в углу карточки */
+        .corner-star {
+            position: absolute;
+            font-size: 2.2rem;
+            color: #f5b342;
+            opacity: 0.3;
+        }
+        .corner-star.tl { top: 20px; left: 25px; }
+        .corner-star.tr { top: 20px; right: 25px; }
+        .corner-star.bl { bottom: 20px; left: 25px; }
+        .corner-star.br { bottom: 20px; right: 25px; }
 
         h1 {
             font-size: 3.4rem;
@@ -42,7 +69,6 @@
             margin-bottom: 6px;
         }
 
-        /* Звёздочки до и после подзаголовка */
         .subtitle {
             font-size: 1.25rem;
             font-weight: 500;
@@ -100,6 +126,37 @@
             box-shadow: 0 12px 28px rgba(70, 130, 200, 0.15);
         }
 
+        /* ===== КНОПКА "ДЛЯ ЗАМЕТОК" (выделенная) ===== */
+        .notes-button-wrap {
+            margin: 25px 0 10px;
+        }
+
+        .notes-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: #fef7e8;
+            border: 3px solid #f5b342;
+            border-radius: 60px;
+            color: #1a3a5e;
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(245, 179, 66, 0.2);
+        }
+
+        .notes-button:hover {
+            background: #fff3d6;
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(245, 179, 66, 0.3);
+        }
+
+        .notes-button .icon {
+            font-size: 1.6rem;
+        }
+
         /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА ===== */
         .credentials-block {
             margin-top: 30px;
@@ -124,10 +181,6 @@
             gap: 8px;
         }
 
-        .credentials-block .label i {
-            font-size: 1.3rem;
-        }
-
         .credentials-block .data {
             display: flex;
             flex-wrap: wrap;
@@ -149,51 +202,6 @@
             border-color: #b5cff0;
         }
 
-        /* ===== ПОЛЕ ДЛЯ ЗАМЕТОК ===== */
-        .notes-section {
-            margin-top: 25px;
-            padding: 22px 25px;
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 32px;
-            border: 2px solid rgba(120, 170, 220, 0.15);
-            text-align: left;
-        }
-
-        .notes-section label {
-            font-weight: 700;
-            color: #1a3a5e;
-            font-size: 1.1rem;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .notes-section textarea {
-            width: 100%;
-            padding: 16px 18px;
-            border-radius: 24px;
-            border: 2px solid rgba(120, 170, 220, 0.2);
-            font-family: 'Nunito', 'Segoe UI', sans-serif;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 100px;
-            transition: border-color 0.3s ease;
-            background: rgba(255, 255, 255, 0.7);
-            color: #1a3a5e;
-        }
-
-        .notes-section textarea:focus {
-            outline: none;
-            border-color: #6f9ed8;
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(111, 158, 216, 0.1);
-        }
-
-        .notes-section textarea::placeholder {
-            color: #8a9fb0;
-            font-weight: 400;
-        }
-
-        /* подсказка */
         .hint {
             color: #5a7fa0;
             font-size: 0.9rem;
@@ -221,6 +229,13 @@
             .credentials-block .data {
                 justify-content: center;
             }
+            .notes-button {
+                font-size: 1.1rem;
+                padding: 14px 28px;
+            }
+            .corner-star {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -228,16 +243,27 @@
 
     <div class="card">
 
-        <h1>Общие файлы</h1>
+        <!-- ===== 5 ДЕКОРАТИВНЫХ ЗВЁЗДОЧЕК/ИКОНОК ===== -->
 
-        <!-- Звёздочки до и после подзаголовка -->
+        <!-- 1-2: Угловые звёздочки (4 штуки) -->
+        <span class="corner-star tl">✦</span>
+        <span class="corner-star tr">✧</span>
+        <span class="corner-star bl">✧</span>
+        <span class="corner-star br">✦</span>
+
+        <h1>
+            <span class="deco-icon">🌟</span>
+            Общие файлы
+            <span class="deco-icon">🌟</span>
+        </h1>
+
         <div class="subtitle">
             <span class="stars">✦</span>
             Отдела методологии кадрового учета
             <span class="stars">✦</span>
         </div>
 
-        <!-- ===== 7 КНОПОК (все ведут на ссылки) ===== -->
+        <!-- ===== 7 КНОПОК ===== -->
         <div class="buttons-grid">
             <a href="https://docs.google.com/spreadsheets/d/1-vI5017aE3pRPvl_P9dblhEzStuYHgP3qCr1znW3pnw/edit?gid=0#gid=0" target="_blank">
                 1. ПФ КЭДО. Текущие замечания
@@ -262,7 +288,16 @@
             </a>
         </div>
 
-        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА В АККАУНТ (вместо 8-й кнопки) ===== -->
+        <!-- ===== КНОПКА "ДЛЯ ЗАМЕТОК" (ведёт в Google Документ) ===== -->
+        <div class="notes-button-wrap">
+            <a href="https://docs.google.com/document/d/162_fPtjzC8j-Fq2-4-Ix5ZPwSp55y2-keVIsytW_QlQ/edit?usp=sharing" target="_blank" class="notes-button">
+                <span class="icon">📝</span>
+                Для заметок
+                <span class="icon">✨</span>
+            </a>
+        </div>
+
+        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА ===== -->
         <div class="credentials-block">
             <div class="label">
                 <span>🔑</span> Данные аккаунта Яндекс
@@ -271,12 +306,6 @@
                 <span class="login">methodologists@yandex.ru</span>
                 <span>Omku123!</span>
             </div>
-        </div>
-
-        <!-- ===== ПОЛЕ ДЛЯ ЗАМЕТОК ===== -->
-        <div class="notes-section">
-            <label for="notes">📝 Для заметок</label>
-            <textarea id="notes" placeholder="Введите ваш комментарий или заметку здесь..."></textarea>
         </div>
 
         <div class="hint">💙 нажми на кнопку, чтобы перейти по ссылке</div>
