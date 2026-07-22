@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт машенька</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #d4e9ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 40px;
+            padding: 40px 30px 50px;
+            box-shadow: 0 20px 60px rgba(80, 130, 200, 0.15);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 500;
+            color: #1a3a5e;
+            margin-bottom: 5px;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #4a7aa0;
+            border-bottom: 2px dashed rgba(100, 150, 200, 0.2);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            display: inline-block;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px 25px;
+            margin: 20px 0 10px;
+        }
+
+        .links a {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1f4970;
+            text-decoration: none;
+            border: 2px solid rgba(120, 170, 220, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .links a:hover {
+            background: #ffffff;
+            border-color: #6f9ed8;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(70, 130, 200, 0.15);
+        }
+
+        .content-block {
+            margin-top: 30px;
+            text-align: left;
+            border-top: 1px solid rgba(120, 170, 220, 0.15);
+            padding-top: 25px;
+        }
+
+        .block {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 25px;
+            padding: 20px 25px;
+            margin-bottom: 15px;
+            border-left: 5px solid #8bb6f0;
+            display: none;
+        }
+
+        .block:target {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .block h2 {
+            font-size: 1.5rem;
+            color: #1a3a5e;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .block p {
+            font-size: 1.05rem;
+            color: #2c4d6e;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .footer-note {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            color: #5a7fa0;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            .links a {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            .container {
+                padding: 25px 15px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>сайт машенька</h1>
+        <div class="subtitle">✨ нежно-голубое настроение ✨</div>
+
+        <!-- ГИПЕРССЫЛКИ -->
+        <div class="links">
+            <a href="#about">о машеньке</a>
+            <a href="#den">ден мудень</a>
+            <a href="#sanya">санявс</a>
+        </div>
+
+        <!-- БЛОКИ С СОДЕРЖАНИЕМ -->
+        <div class="content-block">
+
+            <div class="block" id="about">
+                <h2>🌸 о машеньке</h2>
+                <p>Машенька — это светлый и добрый человек. Она любит уют, красивые вещи и создавать атмосферу тепла вокруг себя.</p>
+            </div>
+
+            <div class="block" id="den">
+                <h2>🧠 ден мудень</h2>
+                <p>Ден Мудень — мудрый друг, который всегда даст совет и поддержит в трудную минуту. Знает ответы на все вопросы!</p>
+            </div>
+
+            <div class="block" id="sanya">
+                <h2>⚡ санявс</h2>
+                <p>Санявс — загадочная личность. Возможно, это Саша, а возможно — что-то большее. Он всегда там, где нужно.</p>
+            </div>
+
+            <p style="color: #5a7fa0; font-size: 0.9rem; text-align: center; margin-top: 10px; opacity: 0.6;">
+                💙 нажми на ссылку, чтобы увидеть содержание 💙
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-note">
+        ⋆｡°✩ нежный фон, как просили ✩°｡⋆
+    </div>
+
+</body>
+</html>
