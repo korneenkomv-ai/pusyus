@@ -17,11 +17,10 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             padding: 30px 20px;
         }
 
-        /* ===== ОСНОВНОЙ КОНТЕНТ (скрыт, пока пароль не введён) ===== */
         .card {
             background: transparent;
             padding: 20px 20px 40px;
@@ -29,105 +28,6 @@
             width: 100%;
             text-align: center;
             position: relative;
-            display: none;
-        }
-
-        .card.visible {
-            display: block;
-        }
-
-        /* ===== ЭКРАН ВВОДА ПАРОЛЯ ===== */
-        .pin-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(212, 233, 255, 0.95);
-            backdrop-filter: blur(8px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-            flex-direction: column;
-            gap: 25px;
-            padding: 20px;
-        }
-
-        .pin-overlay.hidden {
-            display: none;
-        }
-
-        .pin-box {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(8px);
-            padding: 50px 45px 55px;
-            border-radius: 48px;
-            max-width: 440px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(70, 130, 200, 0.15);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-        }
-
-        .pin-box h2 {
-            font-size: 2rem;
-            color: #1a3a5e;
-            margin-bottom: 8px;
-        }
-
-        .pin-box .sub {
-            color: #3d6a8f;
-            font-size: 1rem;
-            margin-bottom: 25px;
-        }
-
-        .pin-box input {
-            width: 100%;
-            padding: 16px 20px;
-            font-size: 1.2rem;
-            text-align: center;
-            border: 2px solid rgba(120, 170, 220, 0.3);
-            border-radius: 30px;
-            outline: none;
-            background: rgba(255, 255, 255, 0.6);
-            font-family: 'Nunito', sans-serif;
-            font-weight: 500;
-            color: #1a3a5e;
-            transition: border-color 0.3s;
-        }
-
-        .pin-box input:focus {
-            border-color: #6f9ed8;
-            background: rgba(255, 255, 255, 0.9);
-        }
-
-        .pin-box .error {
-            color: #d32f2f;
-            font-size: 0.9rem;
-            margin-top: 10px;
-            min-height: 24px;
-        }
-
-        .pin-box button {
-            margin-top: 20px;
-            padding: 14px 50px;
-            background: rgba(255, 255, 255, 0.7);
-            border: 2px solid rgba(120, 170, 220, 0.3);
-            border-radius: 60px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #1a3a5e;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Nunito', sans-serif;
-        }
-
-        .pin-box button:hover {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: #6f9ed8;
-            transform: scale(1.02);
-            box-shadow: 0 8px 24px rgba(70, 130, 200, 0.15);
         }
 
         /* ===== ДЕКОРАТИВНЫЕ СЕРДЕЧКА ===== */
@@ -317,30 +217,12 @@
             .heart-float {
                 display: none;
             }
-            .pin-box {
-                padding: 30px 20px 35px;
-            }
-            .pin-box h2 {
-                font-size: 1.6rem;
-            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== ЭКРАН ВВОДА ПАРОЛЯ ===== -->
-    <div class="pin-overlay" id="pinOverlay">
-        <div class="pin-box">
-            <h2>🔐 Введите пароль</h2>
-            <p class="sub">Доступ к общим файлам отдела</p>
-            <input type="password" id="pinInput" placeholder="Введите пароль" autofocus>
-            <div class="error" id="pinError"></div>
-            <button onclick="checkPin()">Войти</button>
-        </div>
-    </div>
-
-    <!-- ===== ОСНОВНОЙ САЙТ ===== -->
-    <div class="card" id="mainContent">
+    <div class="card">
 
         <!-- ===== ХАОТИЧНЫЕ СЕРДЕЧКА ===== -->
         <span class="heart-float h1">💙</span>
@@ -393,7 +275,18 @@
             </a>
         </div>
 
+        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА ===== -->
+        <div class="credentials-block">
+            <div class="label">
+                <span>🔑</span> Яндекс
+            </div>
+            <div class="data">
+                <span class="login">methodologists@yandex.ru</span>
+                <span>Omku123!</span>
+            </div>
+        </div>
+
     </div>
 
- 
+</body>
 </html>
