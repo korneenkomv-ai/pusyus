@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>сайт машенька</title>
+    <style>
+        body {
+            background: #d4e9ff;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            max-width: 500px;
+        }
+        h1 {
+            color: #1a3a5e;
+            font-size: 2.8rem;
+        }
+        .links a {
+            display: inline-block;
+            margin: 10px;
+            padding: 10px 20px;
+            background: #e8f0fe;
+            color: #1a3a5e;
+            text-decoration: none;
+            border-radius: 30px;
+        }
+        .links a:hover {
+            background: #b5d4ff;
+        }
+        .block {
+            display: none;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f5faff;
+            border-radius: 15px;
+        }
+        .block:target {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>сайт машенька</h1>
+        <p style="color: #4a7aa0;">✨ нежно-голубое настроение ✨</p>
+        
+        <div class="links">
+            <a href="#about">о машеньке</a>
+            <a href="#den">ден мудень</a>
+            <a href="#sanya">санявс</a>
+        </div>
+        
+        <div class="block" id="about">
+            <h2>🌸 о машеньке</h2>
+            <p>Машенька — светлый и добрый человек.</p>
+        </div>
+        
+        <div class="block" id="den">
+            <h2>🧠 ден мудень</h2>
+            <p>Мудрый друг, который всегда поддержит.</p>
+        </div>
+        
+        <div class="block" id="sanya">
+            <h2>⚡ санявс</h2>
+            <p>Загадочная личность, которая всегда рядом.</p>
+        </div>
+        
+        <p style="color: #5a7fa0; margin-top: 20px;">💙 нажми на ссылку 💙</p>
+    </div>
+</body>
+</html>
