@@ -35,31 +35,34 @@
             position: relative;
         }
 
-        /* ===== ДЕКОРАТИВНЫЕ ЗВЁЗДОЧКИ И ИКОНКИ ===== */
-        .deco-star {
-            color: #f5b342;
-            font-size: 1.2rem;
-            margin: 0 4px;
+        /* ===== ДЕКОРАТИВНЫЕ СЕРДЕЧКА ===== */
+        .heart {
+            color: #6f9ed8;
+            font-size: 1.1rem;
             display: inline-block;
+            opacity: 0.6;
         }
 
-        .deco-icon {
-            font-size: 1.3rem;
-            margin: 0 6px;
-            display: inline-block;
+        .heart-big {
+            font-size: 1.6rem;
+            opacity: 0.25;
         }
 
-        /* Звёздочка в углу карточки */
-        .corner-star {
+        /* Хаотичные сердечки */
+        .heart-float {
             position: absolute;
-            font-size: 2.2rem;
-            color: #f5b342;
-            opacity: 0.3;
+            color: #6f9ed8;
+            opacity: 0.2;
+            font-size: 1.8rem;
+            user-select: none;
+            pointer-events: none;
         }
-        .corner-star.tl { top: 20px; left: 25px; }
-        .corner-star.tr { top: 20px; right: 25px; }
-        .corner-star.bl { bottom: 20px; left: 25px; }
-        .corner-star.br { bottom: 20px; right: 25px; }
+        .heart-float.h1 { top: 15px; left: 20px; transform: rotate(-15deg); }
+        .heart-float.h2 { top: 60px; right: 30px; transform: rotate(20deg); font-size: 2.2rem; }
+        .heart-float.h3 { bottom: 40px; left: 40px; transform: rotate(-8deg); }
+        .heart-float.h4 { bottom: 80px; right: 25px; transform: rotate(12deg); font-size: 1.4rem; }
+        .heart-float.h5 { top: 50%; left: 15px; transform: rotate(30deg); font-size: 1.2rem; }
+        .heart-float.h6 { top: 40%; right: 15px; transform: rotate(-20deg); font-size: 1.5rem; }
 
         h1 {
             font-size: 3.4rem;
@@ -80,7 +83,7 @@
         }
 
         .subtitle .stars {
-            color: #f5b342;
+            color: #8bb6f0;
             margin: 0 8px;
             font-size: 1.4rem;
         }
@@ -126,7 +129,7 @@
             box-shadow: 0 12px 28px rgba(70, 130, 200, 0.15);
         }
 
-        /* ===== КНОПКА "ДЛЯ ЗАМЕТОК" (выделенная) ===== */
+        /* ===== КНОПКА "ДЛЯ ЗАМЕТОК" (нежно-голубая) ===== */
         .notes-button-wrap {
             margin: 25px 0 10px;
         }
@@ -136,77 +139,71 @@
             align-items: center;
             gap: 12px;
             padding: 18px 40px;
-            background: #fef7e8;
-            border: 3px solid #f5b342;
+            background: #e8f4ff;
+            border: 3px solid #8bb6f0;
             border-radius: 60px;
             color: #1a3a5e;
             font-size: 1.3rem;
             font-weight: 700;
             text-decoration: none;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(245, 179, 66, 0.2);
+            box-shadow: 0 4px 12px rgba(111, 158, 216, 0.15);
         }
 
         .notes-button:hover {
-            background: #fff3d6;
+            background: #d4e9ff;
             transform: scale(1.03);
-            box-shadow: 0 8px 24px rgba(245, 179, 66, 0.3);
+            box-shadow: 0 8px 24px rgba(111, 158, 216, 0.25);
+            border-color: #6f9ed8;
         }
 
         .notes-button .icon {
             font-size: 1.6rem;
         }
 
-        /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА ===== */
+        /* ===== БЛОК С ДАННЫМИ ДЛЯ ВХОДА (компактный) ===== */
         .credentials-block {
-            margin-top: 30px;
-            padding: 22px 25px;
-            background: #fef7e8;
+            margin-top: 25px;
+            padding: 14px 22px;
+            background: #e8f4ff;
             border-radius: 32px;
-            border: 2px solid #f5d9a3;
+            border: 2px solid #b5cff0;
             text-align: left;
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            justify-content: space-between;
-            gap: 15px 20px;
+            justify-content: center;
+            gap: 12px 25px;
         }
 
         .credentials-block .label {
             font-weight: 700;
             color: #1a3a5e;
-            font-size: 1.1rem;
+            font-size: 1rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .credentials-block .data {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px 20px;
-            font-size: 1rem;
+            gap: 8px 16px;
+            font-size: 0.95rem;
         }
 
         .credentials-block .data span {
             background: white;
-            padding: 6px 16px;
-            border-radius: 40px;
-            border: 1px solid #f5d9a3;
+            padding: 4px 14px;
+            border-radius: 30px;
+            border: 1px solid #b5cff0;
             font-weight: 500;
             color: #1a3a5e;
         }
 
         .credentials-block .data .login {
-            background: #e8f0fe;
-            border-color: #b5cff0;
-        }
-
-        .hint {
-            color: #5a7fa0;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            opacity: 0.7;
+            background: #ffffff;
+            border-color: #8bb6f0;
         }
 
         @media (max-width: 600px) {
@@ -223,8 +220,9 @@
             }
             .credentials-block {
                 flex-direction: column;
-                align-items: stretch;
+                align-items: center;
                 text-align: center;
+                padding: 12px 16px;
             }
             .credentials-block .data {
                 justify-content: center;
@@ -233,7 +231,7 @@
                 font-size: 1.1rem;
                 padding: 14px 28px;
             }
-            .corner-star {
+            .heart-float {
                 display: none;
             }
         }
@@ -243,19 +241,16 @@
 
     <div class="card">
 
-        <!-- ===== 5 ДЕКОРАТИВНЫХ ЗВЁЗДОЧЕК/ИКОНОК ===== -->
+        <!-- ===== ХАОТИЧНЫЕ СЕРДЕЧКА ===== -->
+        <span class="heart-float h1">💙</span>
+        <span class="heart-float h2">💙</span>
+        <span class="heart-float h3">💙</span>
+        <span class="heart-float h4">💙</span>
+        <span class="heart-float h5">💙</span>
+        <span class="heart-float h6">💙</span>
 
-        <!-- 1-2: Угловые звёздочки (4 штуки) -->
-        <span class="corner-star tl">✦</span>
-        <span class="corner-star tr">✧</span>
-        <span class="corner-star bl">✧</span>
-        <span class="corner-star br">✦</span>
-
-        <h1>
-            <span class="deco-icon">🌟</span>
-            Общие файлы
-            <span class="deco-icon">🌟</span>
-        </h1>
+        <!-- Заголовок без звёздочек -->
+        <h1>Общие файлы</h1>
 
         <div class="subtitle">
             <span class="stars">✦</span>
@@ -288,27 +283,25 @@
             </a>
         </div>
 
-        <!-- ===== КНОПКА "ДЛЯ ЗАМЕТОК" (ведёт в Google Документ) ===== -->
+        <!-- ===== КНОПКА "ДЛЯ ЗАМЕТОК" ===== -->
         <div class="notes-button-wrap">
             <a href="https://docs.google.com/document/d/162_fPtjzC8j-Fq2-4-Ix5ZPwSp55y2-keVIsytW_QlQ/edit?usp=sharing" target="_blank" class="notes-button">
                 <span class="icon">📝</span>
                 Для заметок
-                <span class="icon">✨</span>
+                <span class="icon">💙</span>
             </a>
         </div>
 
-        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА ===== -->
+        <!-- ===== ДАННЫЕ ДЛЯ ВХОДА (компактно) ===== -->
         <div class="credentials-block">
             <div class="label">
-                <span>🔑</span> Данные аккаунта Яндекс
+                <span>🔑</span> Яндекс
             </div>
             <div class="data">
                 <span class="login">methodologists@yandex.ru</span>
                 <span>Omku123!</span>
             </div>
         </div>
-
-        <div class="hint">💙 нажми на кнопку, чтобы перейти по ссылке</div>
 
     </div>
 
