@@ -1,227 +1,256 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Общие файлы</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1С: Кабинет сотрудника — инструкции</title>
+  <style>
+    /* Обнуление и база */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        body {
-            background: #d4e9ff;
-            font-family: 'Nunito', 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 30px 20px;
-        }
+    body {
+      background: linear-gradient(145deg, #f5f7fc 0%, #e9edf5 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Roboto, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      padding: 20px;
+    }
 
-        .card {
-            background: transparent;
-            padding: 20px 20px 40px;
-            max-width: 1100px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
+    .card {
+      max-width: 820px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.70);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-radius: 56px;
+      padding: 48px 40px 56px;
+      box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.25),
+                  0 8px 24px -6px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: 0.2s;
+      text-align: center;
+    }
 
-        /* ===== ДЕКОРАТИВНЫЕ СЕРДЕЧКА ===== */
-        .heart-float {
-            position: absolute;
-            color: #6f9ed8;
-            opacity: 0.25;
-            font-size: 1.8rem;
-            user-select: none;
-            pointer-events: none;
-        }
-        .heart-float.h1 { top: 10px; left: 15px; transform: rotate(-15deg); }
-        .heart-float.h2 { top: 50px; right: 20px; transform: rotate(20deg); font-size: 2.2rem; }
-        .heart-float.h3 { bottom: 30px; left: 30px; transform: rotate(-8deg); }
-        .heart-float.h4 { bottom: 70px; right: 15px; transform: rotate(12deg); font-size: 1.4rem; }
-        .heart-float.h5 { top: 45%; left: 10px; transform: rotate(30deg); font-size: 1.2rem; }
-        .heart-float.h6 { top: 35%; right: 10px; transform: rotate(-20deg); font-size: 1.5rem; }
+    /* Огромный заголовок */
+    h1 {
+      font-size: 3.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #0a1e3c;
+      margin-bottom: 24px;
+      line-height: 1.15;
+      text-shadow: 0 4px 12px rgba(0, 20, 50, 0.08);
+      word-break: break-word;
+    }
 
-        h1 {
-            font-size: 3.4rem;
-            font-weight: 700;
-            color: #1a3a5e;
-            letter-spacing: -0.5px;
-            margin-bottom: 6px;
-            text-shadow: 0 2px 12px rgba(255, 255, 255, 0.3);
-        }
+    /* акцентная линия под заголовком (декоративно) */
+    .title-underline {
+      width: 120px;
+      height: 5px;
+      background: #2a6df4;
+      border-radius: 8px;
+      margin: 0 auto 40px auto;
+      box-shadow: 0 4px 12px rgba(42, 109, 244, 0.3);
+    }
 
-        .subtitle {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: #1a3a5e;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
-            padding-bottom: 18px;
-            margin-bottom: 30px;
-            letter-spacing: 0.8px;
-            text-shadow: 0 1px 8px rgba(255, 255, 255, 0.2);
-        }
+    /* контейнер для двух кнопок — 5х5 квадраты */
+    .button-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      margin-top: 12px;
+    }
 
-        .subtitle .stars {
-            color: #6f9ed8;
-            margin: 0 8px;
-            font-size: 1.4rem;
-        }
+    /* каждая кнопка — квадрат 5 на 5 (в rem, но с адаптивом) */
+    .btn-square {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      max-width: 280px;   /* чтобы на узких экранах не расползались */
+      aspect-ratio: 1 / 1; /* строгий квадрат */
+      background: #ffffff;
+      border-radius: 32px;  /* крупное скругление */
+      padding: 20px 16px;
+      text-decoration: none;
+      color: #0a1e3c;
+      font-weight: 600;
+      font-size: 1.6rem;
+      line-height: 1.3;
+      text-align: center;
+      box-shadow: 0 12px 28px -8px rgba(0, 20, 40, 0.15),
+                  0 4px 12px rgba(0, 0, 0, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      transition: 0.25s ease;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(2px);
+      word-break: break-word;
+      flex: 1 1 200px;    /* минимальная ширина 200px, растягиваются */
+    }
 
-        /* ===== БОЛЬШОЕ ПОЛЕ ДЛЯ КНОПОК ===== */
-        .buttons-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-            margin: 25px 0 20px;
-            padding: 30px 25px;
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(4px);
-            border-radius: 40px;
-            border: 2px dashed rgba(255, 255, 255, 0.5);
-            min-height: 150px;
-        }
+    /* иконка-акцент (эмодзи) для каждой кнопки */
+    .btn-square .emoji-big {
+      display: block;
+      font-size: 3.2rem;
+      line-height: 1;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.05));
+    }
 
-        .buttons-grid a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 16px;
-            background: rgba(255, 255, 255, 0.7);
-            color: #1a3a5e;
-            text-decoration: none;
-            border-radius: 28px;
-            font-size: 1.05rem;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
-            text-align: center;
-            min-height: 70px;
-            word-break: break-word;
-            line-height: 1.3;
-            cursor: pointer;
-            backdrop-filter: blur(2px);
-        }
+    /* первая кнопка – чуть другой оттенок */
+    .btn-square:first-child {
+      background: linear-gradient(135deg, #ffffff 0%, #f2f6ff 100%);
+      border-color: #b3ceff;
+    }
 
-        .buttons-grid a:hover {
-            background: rgba(255, 255, 255, 0.95);
-            border-color: #6f9ed8;
-            transform: translateY(-4px);
-            box-shadow: 0 12px 28px rgba(70, 130, 200, 0.15);
-        }
+    /* вторая кнопка – тёплый акцент */
+    .btn-square:last-child {
+      background: linear-gradient(135deg, #ffffff 0%, #faf3e8 100%);
+      border-color: #ffdbb5;
+    }
 
-        /* ===== КНОПКА "ДЛЯ ЗАМЕТОК" ===== */
-        .notes-button-wrap {
-            margin: 25px 0 10px;
-        }
+    /* ховеры */
+    .btn-square:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 24px 44px -12px rgba(0, 30, 70, 0.3);
+      background: #ffffff;
+      border-color: #2a6df4;
+    }
 
-        .notes-button {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 18px 40px;
-            background: rgba(255, 255, 255, 0.6);
-            border: 3px solid rgba(255, 255, 255, 0.5);
-            border-radius: 60px;
-            color: #1a3a5e;
-            font-size: 1.3rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 4px 12px rgba(111, 158, 216, 0.1);
-        }
+    .btn-square:last-child:hover {
+      border-color: #e68a2e;
+    }
 
-        .notes-button:hover {
-            background: rgba(255, 255, 255, 0.85);
-            transform: scale(1.03);
-            box-shadow: 0 8px 24px rgba(111, 158, 216, 0.2);
-            border-color: #6f9ed8;
-        }
+    .btn-square:active {
+      transform: scale(0.97);
+      transition: 0.08s;
+    }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .card { padding: 15px 10px 30px; }
-            .buttons-grid {
-                grid-template-columns: 1fr;
-                padding: 20px 15px;
-            }
-            .buttons-grid a {
-                font-size: 1rem;
-                padding: 14px;
-                min-height: 60px;
-            }
-            .notes-button {
-                font-size: 1.1rem;
-                padding: 14px 28px;
-            }
-            .heart-float {
-                display: none;
-            }
-        }
-    </style>
+    /* дополнительный текст (подпись) */
+    .sub-footer {
+      margin-top: 44px;
+      font-size: 0.9rem;
+      color: #3f4e66;
+      opacity: 0.7;
+      letter-spacing: 0.3px;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      padding-top: 28px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sub-footer span {
+      background: rgba(255,255,255,0.4);
+      padding: 6px 18px;
+      border-radius: 40px;
+      backdrop-filter: blur(2px);
+    }
+
+    /* адаптив для маленьких экранов */
+    @media (max-width: 600px) {
+      .card {
+        padding: 32px 18px 36px;
+        border-radius: 36px;
+      }
+
+      h1 {
+        font-size: 2.6rem;
+      }
+
+      .btn-square {
+        max-width: 240px;
+        font-size: 1.3rem;
+        border-radius: 28px;
+        padding: 16px 12px;
+        flex: 1 1 160px;
+      }
+
+      .btn-square .emoji-big {
+        font-size: 2.6rem;
+        margin-bottom: 8px;
+      }
+
+      .title-underline {
+        width: 80px;
+        height: 4px;
+        margin-bottom: 28px;
+      }
+
+      .button-grid {
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 440px) {
+      h1 {
+        font-size: 2.1rem;
+      }
+      .btn-square {
+        max-width: 200px;
+        font-size: 1.1rem;
+        border-radius: 24px;
+        flex: 1 1 140px;
+      }
+      .btn-square .emoji-big {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Для очень крупных экранов — сохраняем квадрат 5х5 в условных единицах */
+    @media (min-width: 1200px) {
+      .btn-square {
+        max-width: 320px;
+        font-size: 1.9rem;
+      }
+      .btn-square .emoji-big {
+        font-size: 4rem;
+      }
+    }
+  </style>
 </head>
 <body>
+  <div class="card">
+    <!-- ОГРОМНЫЙ ЗАГОЛОВОК -->
+    <h1>Инструкции по работе с сервисом<br>1С: Кабинет сотрудника</h1>
+    <div class="title-underline"></div>
 
-    <div class="card">
+    <!-- ДВЕ КВАДРАТНЫЕ КНОПКИ 5х5 (с сохранением пропорций) -->
+    <div class="button-grid">
+      <!-- первая кнопка -->
+      <a href="https://disk.yandex.ru/client/disk/1С%3A%20Кабинет%20сотрудника/Инструкции%20для%20работников" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-square">
+        <span class="emoji-big">👤</span>
+        Инструкции для работников
+      </a>
 
-        <!-- ===== ХАОТИЧНЫЕ СЕРДЕЧКА ===== -->
-        <span class="heart-float h1">💙</span>
-        <span class="heart-float h2">💙</span>
-        <span class="heart-float h3">💙</span>
-        <span class="heart-float h4">💙</span>
-        <span class="heart-float h5">💙</span>
-        <span class="heart-float h6">💙</span>
-
-        <h1>Общие файлы</h1>
-
-        <div class="subtitle">
-            <span class="stars">✦</span>
-            Отдела методологии кадрового учета
-            <span class="stars">✦</span>
-        </div>
-
-        <!-- ===== 8 КНОПОК ===== -->
-        <div class="buttons-grid">
-            <a href="https://docs.google.com/spreadsheets/d/1-vI5017aE3pRPvl_P9dblhEzStuYHgP3qCr1znW3pnw/edit?gid=0#gid=0" target="_blank">
-                1. ПФ КЭДО. Текущие замечания
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/14clJJmBMhtM1x8zSuVq6jL1YFmpBBTKsUojp_FBsFl0/edit?gid=0#gid=0" target="_blank">
-                2. Заявки в УСП
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/1ja6mOnFm2X8OtOMq7G3aog9EVk3kEXHFe9wmmXQUvhc/edit?gid=0#gid=0" target="_blank">
-                3. Инструкции по печатным формам
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/1pPJ7BLQJmIx7S7Lghm0Is-xY9UlRzaov67QE-MnxpKw/edit?gid=421631066#gid=421631066" target="_blank">
-                4. Проверка роли ОУ_Согласующий 4198 + печать ПФ без проведения 5627
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/1eQ80ZQO-Hu9kGC3stnw5X9guIrhzu7XGoXdmXzxaacI/edit?gid=1593687503#gid=1593687503" target="_blank">
-                5. Проверка Шаблонов КЭДО (стат модель)
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/13viXj7K4WqwDW9xEIKKswfNS9sFPe6l-jOQ72TL5B7Q/edit?gid=1407305442#gid=1407305442" target="_blank">
-                6. Дорожная карта ПФ ЦИО
-            </a>
-            <a href="https://disk.yandex.ru/d/aVp8Rt1ZAKM_NQ" target="_blank">
-                7. Инструкции 1С:Кабинет сотрудника
-            </a>
-            <a href="https://docs.google.com/spreadsheets/d/1zPWCWR2BISrWP1569-r8SGTxZVdwZPluQaEUEbCpVRs/edit?gid=0#gid=0" target="_blank">
-                8. Чек-лист перехода на КЭДО
-            </a>
-        </div>
-
-        <!-- ===== КНОПКА "ДЛЯ ЗАМЕТОК" ===== -->
-        <div class="notes-button-wrap">
-            <a href="https://docs.google.com/document/d/162_fPtjzC8j-Fq2-4-Ix5ZPwSp55y2-keVIsytW_QlQ/edit?usp=sharing" target="_blank" class="notes-button">
-                Для заметок
-            </a>
-        </div>
-
+      <!-- вторая кнопка -->
+      <a href="https://disk.yandex.ru/client/disk/1С%3A%20Кабинет%20сотрудника/Руководство%20пользователя%201С%3A%20Кабинет%20сотрудника" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="btn-square">
+        <span class="emoji-big">📋</span>
+        Инструкции для кадровиков, руководителей‑подписантов, согласующих
+      </a>
     </div>
 
+    <!-- небольшая декоративная подпись (не обязательная, но уместна) -->
+    <div class="sub-footer">
+      <span>🔹 перейти по ссылке</span>
+      <span>📎 Яндекс Диск</span>
+    </div>
+  </div>
 </body>
 </html>
